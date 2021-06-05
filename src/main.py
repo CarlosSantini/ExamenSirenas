@@ -32,7 +32,6 @@ if __name__ == '__main__':
     "DecisionTree"
     "RandomForest"
     '''
-
-    y_test = training(X_train, y_train, X_test, 'NearestCentroid')
+    y_test = training(X_train, y_train, X_test, config.MODELO)
 
     save_sirenas_migrantes(sirenas, y_test, le)
