@@ -7,7 +7,7 @@ def feature_process(sirenas_historico, sirenas):
     print(sirenas_historico.head())
 
     # Obtenemos el dataset para entrenamiento y prueba
-    X_train, y_train = sirenas_historico[['v1', 'v2', 'v3', 'v4']], [x for x in sirenas_historico['especie']]
+    y_train = [x for x in sirenas_historico['especie']] # Solo tomamos los labels para transformalos
     X_test = sirenas[['v1', 'v2', 'v3', 'v4']]
 
     # Transformamos los labels de sirenas_historico de categorico a numerico para poder operarlo con scikit-learn
@@ -19,5 +19,12 @@ def feature_process(sirenas_historico, sirenas):
     df['especie'] = y_train_transform
     df.to_csv(config.SIRENAS_TRANSFORMADO, index=False)
 
+    # Leemos el archivo csv que contiene los valores de cada sirena con su respectivo label numerico
+    sirenas_transform_y = pd.read_csv(config.SIRENAS_TRANSFORMADO)
+
+    # Obtenemos los valores de cada sirena, y su etiqueta.
+    X_train, y_train_t = sirenas_transform_y[['v1', 'v2', 'v3', 'v4']], [x for x in sirenas_transform_y['especie']]
+
+    return X_train, y_train_t, X_test
 
 

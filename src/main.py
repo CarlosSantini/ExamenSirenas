@@ -9,4 +9,7 @@ if __name__ == '__main__':
     sirenas = pd.read_csv(config.SIRENAS)
 
     # Transformacion debida para los datasets
-    feature_process(sirenas_historico, sirenas)
+    X_train, y_train, X_test = feature_process(sirenas_historico, sirenas)
+
+
+
