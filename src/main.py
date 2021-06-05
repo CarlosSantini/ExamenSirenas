@@ -6,7 +6,10 @@ from train import training
 
 def save_sirenas_migrantes(file, y_predicts, le):
     # print(file.columns)
+     # funcion para convertir las etiquetas de 0,1 a "endemica" o "migrante"
     y_predicts = le.inverse_transform(y_predicts)
+
+    # actualiza la etiqueta correspondiente dentro del archivo "sirenas_endemicas_y_sirenas_migrantes.csv"
     file['especie'] = y_predicts
     file.to_csv(config.SIRENAS, index=False)
 
