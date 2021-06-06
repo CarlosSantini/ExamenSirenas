@@ -1,6 +1,6 @@
 from sklearn import preprocessing
 import pandas as pd
-from src import config
+from src.config import SIRENAS_TRANSFORMADO
 
 
 def feature_process(sirenas_historico, sirenas):
@@ -18,10 +18,10 @@ def feature_process(sirenas_historico, sirenas):
     # mayor facilidad este dataset a futuro para la fase de entrenamiento
     df = sirenas_historico.copy()
     df['especie'] = y_train_transform
-    df.to_csv(config.SIRENAS_TRANSFORMADO, index=False)
+    df.to_csv(SIRENAS_TRANSFORMADO, index=False)
 
     # Leemos el archivo csv que contiene los valores de cada sirena con su respectivo label numerico
-    sirenas_transform_y = pd.read_csv(config.SIRENAS_TRANSFORMADO)
+    sirenas_transform_y = pd.read_csv(SIRENAS_TRANSFORMADO)
 
     # Obtenemos los valores de cada sirena, y su etiqueta.
     X_train, y_train_t = sirenas_transform_y[['v1', 'v2', 'v3', 'v4']], [x for x in sirenas_transform_y['especie']]
