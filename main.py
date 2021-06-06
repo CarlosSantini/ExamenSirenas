@@ -1,5 +1,5 @@
 import pandas as pd
-from src.config import SIRENAS, SIRENAS_HISTORICO,MODELO
+from src import config
 from src.feature_processing import feature_process
 from src.train import training
 
@@ -11,13 +11,14 @@ def save_sirenas_migrantes(file, y_predicts, le):
 
     # actualiza la etiqueta correspondiente dentro del archivo "sirenas_endemicas_y_sirenas_migrantes.csv"
     file['especie'] = y_predicts
-    file.to_csv(SIRENAS, index=False)
+    file.to_csv(config.SIRENAS, index=False)
 
 
 if __name__ == '__main__':
+
     # Leer los archivos csv originales
-    sirenas_historico = pd.read_csv(SIRENAS_HISTORICO)
-    sirenas = pd.read_csv(SIRENAS)
+    sirenas_historico = pd.read_csv(config.SIRENAS_HISTORICO)
+    sirenas = pd.read_csv(config.SIRENAS)
 
     # Transformacion debida para los datasets
     X_train, y_train, X_test, le = feature_process(sirenas_historico, sirenas)
@@ -32,6 +33,6 @@ if __name__ == '__main__':
     "DecisionTree"
     "RandomForest"
     '''
-    y_test = training(X_train, y_train, X_test, MODELO)
+    y_test = training(X_train, y_train, X_test, config.MODELO)
 
     save_sirenas_migrantes(sirenas, y_test, le)
