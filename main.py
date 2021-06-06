@@ -1,7 +1,7 @@
 import pandas as pd
 from src import config
-from feature_processing import feature_process
-from train import training
+from src.feature_processing import feature_process
+from src.train import training
 
 
 def save_sirenas_migrantes(file, y_predicts, le):
