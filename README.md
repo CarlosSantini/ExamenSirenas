@@ -2,7 +2,7 @@
 Tercer desafio de TrueHome
 
 # Como ejecutar el codigo
-El script ejecutable "main.py" se encuentra en la carpeta: "ExamenSirenas/src/main.py"
+El script ejecutable "main.py" se encuentra en la carpeta: "ExamenSirenas/main.py"
 
 # Ver archivo "sirenas_endemicas_y_sirenas_migrantes.csv"
 Este archivo contiene las sirenas que se buscan clasificar, si son endemicas o migrantes.  
